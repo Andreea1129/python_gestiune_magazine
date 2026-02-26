@@ -1,0 +1,13 @@
+.container, .button-container{
+    @media(max-width:576px){
+        display:flex;
+        flex-wrap:wrap;
+    }
+}
+
+table td,
+table th {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break:break-all;
+}
