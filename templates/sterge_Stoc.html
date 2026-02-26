@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Sterge Stoc</title>
+</head>
+<body>
+
+
+  {% if deleted %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-success mt-5">Stocul / Stocurile selectate au fost șterse!</h1>
+    <img class="mt-5 w-25" src="https://www.shutterstock.com/image-vector/illustration-file-deleted-successfully-trash-600nw-2488381071.jpg" />
+    </div>
+  {% else %}
+    <div
+		class="d-flex flex-column justify-content-center align-items-center">
+		<h1 class="text-danger mt-5">Nu ai selectat stocul dorit pentru stergere!</h1>
+		<img class="w-25 mt-5" src="https://media.istockphoto.com/id/1252349524/vector/cartoon-effects.jpg?s=612x612&w=0&k=20&c=9LKpp79ZMxVNft5QmLt-ocwjweP-xYMzkulyfApvgBA="
+		alt="oops" />
+	</div>
+    {% if error %}<div class="alert alert-danger mt-3">{{ error }}</div>{% endif %}
+  {% endif %}
+  <p class="text-center mt-5"><a href="/tabela_Stoc.html" class="btn btn-primary">Inapoi la stocuri</a></p>
+  <p class="text-center mt-3">
+    <a href="index.html" class="btn btn-primary">Home</a> <br />
+  </p>
+
+</body>
+</html>

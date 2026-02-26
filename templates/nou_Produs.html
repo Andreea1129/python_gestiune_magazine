@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Adauga Produs</title>
+</head>
+<body>
+
+<nav class="navbar bg-dark p-3">
+  <div class="container-fluid">
+    <div class="d-flex">
+      <a href="/index.html" class="btn btn-dark me-3"><b>Home</b></a>
+    </div>
+  </div>
+</nav>
+
+{% if success %}
+  <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+    <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+	<h1 class="text-success m-3">Datele au fost adaugate cu succes!</h1>
+	<img style="width: 200px" src="https://media.istockphoto.com/id/691856234/vector/flat-round-check-mark-green-icon-button-tick-symbol-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=hXL5nXQ2UJlh4yzs2LyZC4GtctQG0fs-mk30GPPbhbQ="
+	alt="success" />
+	<p class="text-center">
+	<a href="tabela_Produse.html" class="btn btn-primary mt-5">Înapoi la lista de produse</a>
+	</p>
+	</div>
+  </div>
+{% else %}
+  <div class="container">
+    <h1 class="text-center m-5">Adaugare Produs Nou</h1>
+    {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+    <form action="/nou_Produs.html" method="post">
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Nume Produs:</label>
+        <div class="col-sm-6"><input type="text" name="Nume" class="form-control" value="{{ form.get('Nume','') }}"></div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Cod:</label>
+        <div class="col-sm-6"><input type="text" name="Cod" class="form-control" value="{{ form.get('Cod','') }}"></div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Categorie:</label>
+        <div class="col-sm-6"><input type="text" name="Categorie" class="form-control" value="{{ form.get('Categorie','') }}"></div>
+      </div>
+      <p class="text-center">
+        <button type="submit" class="btn btn-success">Adauga produsul</button>
+        <a href="/tabela_Produse.html" class="btn btn-secondary ms-2">Renunta</a>
+      </p>
+    </form>
+  </div>
+{% endif %}
+</body>
+</html>

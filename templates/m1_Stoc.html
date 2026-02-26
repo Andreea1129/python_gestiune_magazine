@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>m1_Stoc</title>
+</head>
+<body>
+<nav class="navbar bg-dark p-3">
+  <div class="container-fluid">
+    <div class="d-flex">
+      <a href="/index.html" class="btn btn-dark me-3"><b>Home</b></a>
+      <a href="nou_Stoc.html" class="btn btn-dark"><b>Adauga un nou stoc</b></a>
+    </div>
+  </div>
+</nav>
+
+  {% if missing %}
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-danger mt-5">Selecteaza un stoc inainte de a modifica!</h1>
+    <img class="w-25 mt-5" src="https://media.istockphoto.com/id/1252349524/vector/cartoon-effects.jpg?s=612x612&w=0&k=20&c=9LKpp79ZMxVNft5QmLt-ocwjweP-xYMzkulyfApvgBA="
+	alt="oops" />
+	<p class="text-center">
+	<a href="modifica_Stoc.html" class="btn btn-primary mt-5">Inapoi la stocuri</a>
+	</div>
+  {% else %}
+    <h1 class="text-center m-5">Stocul selectat</h1>
+    <form action="/m2_Stoc.html" method="post">
+      <input type="hidden" name="idstoc" value="{{ stoc.idstoc }}">
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Magazin:</label>
+        <div class="col-sm-6">
+          <select name="idmagazin" class="form-select">
+            {% for m in magazine %}
+              <option value="{{ m.idmagazin }}" {% if m.idmagazin==stoc.idmagazin %}selected{% endif %}>
+                {{ m.idmagazin }} - {{ m.Nume }}, {{ m.Adresa }}, {{ m.Email }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Produs:</label>
+        <div class="col-sm-6">
+          <select name="idprodus" class="form-select">
+            {% for p in produse %}
+              <option value="{{ p.idprodus }}" {% if p.idprodus==stoc.idprodus %}selected{% endif %}>
+                {{ p.idprodus }} - {{ p.Nume }} ({{ p.Cod }}, {{ p.Categorie }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Cantitate:</label>
+        <div class="col-sm-6"><input type="text" name="Cantitate" class="form-control" value="{{ stoc.Cantitate }}"></div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Pret Vanzare:</label>
+        <div class="col-sm-6"><input type="text" name="PretVanzare" class="form-control" value="{{ stoc.pret_vanzare }}"></div>
+      </div>
+
+      <p class="text-center mt-4"><button type="submit" class="btn btn-primary">Modifica stocul</button></p>
+    </form>
+  {% endif %}
+
+</body>
+</html>

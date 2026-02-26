@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>m1_Produs</title>
+</head>
+<body>
+<nav class="navbar bg-dark p-3">
+  <div class="container-fluid">
+    <div class="d-flex">
+      <a href="/index.html" class="btn btn-dark me-3"><b>Home</b></a>
+      <a href="nou_Produs.html" class="btn btn-dark"><b>Adauga un nou produs</b></a>
+    </div>
+  </div>
+</nav>
+
+  {% if missing %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+		<h1 class="text-danger mt-5">Selecteaza un produs inainte de a modifica!</h1>
+		<img class="w-25 mt-5"
+			src="https://media.istockphoto.com/id/1252349524/vector/cartoon-effects.jpg?s=612x612&w=0&k=20&c=9LKpp79ZMxVNft5QmLt-ocwjweP-xYMzkulyfApvgBA="
+			alt="oops" />
+		<p class="text-center">
+		    <a href="modifica_Produs.html" class="btn btn-primary mt-5">Inapoi la lista de produse</a>
+	    </p>
+	</div>
+  {% else %}
+    <h1 class="text-center m-5">Produsul selectat</h1>
+    <form action="/m2_Produs.html" method="post">
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Id Produs:</label>
+        <div class="col-sm-6"><input type="text" name="idprodus" class="form-control" value="{{ produs.idprodus }}" readonly></div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Nume:</label>
+        <div class="col-sm-6"><input type="text" name="Nume" class="form-control" value="{{ produs.Nume }}"></div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Cod:</label>
+        <div class="col-sm-6"><input type="text" name="Cod" class="form-control" value="{{ produs.Cod }}"></div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-end">Categorie:</label>
+        <div class="col-sm-6"><input type="text" name="Categorie" class="form-control" value="{{ produs.Categorie }}"></div>
+      </div>
+      <div class="text-center mt-5">
+		<button type="submit" class="btn btn-primary">Modifica produsul</button>
+			</div>
+    </form>
+  {% endif %}
+
+</body>
+</html>

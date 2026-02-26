@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Tabela Produse</title>
+</head>
+<body>
+<nav class="navbar bg-dark p-3">
+  <div class="container-fluid">
+    <div class="d-flex">
+      <a href="/index.html" class="btn btn-dark me-3"><b>Home</b></a>
+      <a href="/nou_Produs.html" class="btn btn-dark"><b>Adauga un nou produs</b></a>
+    </div>
+  </div>
+</nav>
+
+  <h1 class="text-center m-5">Tabela Produse</h1>
+  <form action="/sterge_Produs.html" method="post">
+    <table class="table table-hover table-light">
+      <thead>
+        <tr>
+          <th><b>Mark</b></th>
+          <th><b>IdProdus</b></th>
+          <th><b>Nume</b></th>
+          <th><b>Cod</b></th>
+          <th><b>Categorie</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in produse %}
+        <tr>
+          <td><input type="checkbox" name="primarykey" value="{{ p.idprodus }}"></td>
+          <td>{{ p.idprodus }}</td>
+          <td>{{ p.Nume }}</td>
+          <td>{{ p.Cod }}</td>
+          <td>{{ p.Categorie }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="text-center">
+      <button type="submit" class="btn btn-danger">Sterge liniile marcate</button>
+    </p>
+  </form>
+
+</body>
+</html>
